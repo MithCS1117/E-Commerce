@@ -4,7 +4,8 @@ This repository hosts the source code for an eCommerce platform built with Next.
 
 ## Demo
 
-- Live Preview: [https://ecommerce-nextjs-by-shan.vercel.app/](https://ecommerce-nextjs-by-shan.vercel.app/)
+- User Preview: [https://ecommerce-nextjs-by-shan.vercel.app/](https://ecommerce-nextjs-by-shan.vercel.app/)
+- Admin Pannel: [https://ecommerce-nextjs-by-shan.vercel.app/admin/dashboard](https://ecommerce-nextjs-by-shan.vercel.app/admin/dashboard)
 
 ## Features
 
