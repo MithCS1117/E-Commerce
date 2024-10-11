@@ -18,7 +18,11 @@ const TrendingProducts = () => {
 
   useEffect(() => {
     axios
-      .get("/api/get_products")
+      .get("/api/get_products", {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      })
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);

@@ -26,7 +26,11 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(setLoading(true));
     axios
-      .get("/api/get_products")
+      .get("/api/get_products", {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      })
       .then((res) => {
         setProducts(res.data);
       })
