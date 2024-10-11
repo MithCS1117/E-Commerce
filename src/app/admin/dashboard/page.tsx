@@ -24,18 +24,28 @@ const Dashboard = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setLoading(true));
-    axios
-      .get("/api/get_products", {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      })
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => dispatch(setLoading(false)));
+    const fetchProducts = async () => {
+      dispatch(setLoading(true));
+      try {
+        const response = await fetch("/api/get_products", {
+          method: "GET", // HTTP method
+          cache: "no-store", // Disable caching
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+
+    fetchProducts();
   }, [updateTable]);
 
   console.log("products:", products);
