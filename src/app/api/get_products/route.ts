@@ -6,7 +6,12 @@ export async function GET() {
   try {
     await connectMongoDB();
     const data = await Product.find();
-    return NextResponse.json(data);
+    const response = NextResponse.json(data);
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate"
+    );
+    return response;
   } catch (error) {
     return NextResponse.json(
       {
